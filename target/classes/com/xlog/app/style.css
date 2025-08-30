@@ -1,0 +1,127 @@
+/* ========== Global Layout ========== */
+.page-bg { -fx-background-color: #f7f8fb; }
+.card { -fx-background-color: #ffffff; -fx-background-radius: 14; -fx-padding: 12; }
+.section-title { -fx-font-weight: 800; -fx-text-fill: #111827; -fx-font-size: 14px; }
+.subdued { -fx-text-fill: #6b7280; }
+.greeting { -fx-font-size: 28px; -fx-font-weight: 900; -fx-text-fill: #111827; }
+
+/* ========== Top Bar / Nav ========== */
+.topbar { -fx-background-color: #ffffff; }
+.brand  { -fx-font-size: 18px; -fx-font-weight: 800; }
+
+.nav-primary {
+  -fx-background-color: #10b981;      /* green */
+  -fx-text-fill: white;
+  -fx-background-radius: 999;
+  -fx-padding: 6 16;
+}
+.nav-secondary {
+  -fx-background-color: #eef2f7;
+  -fx-text-fill: #111827;
+  -fx-background-radius: 999;
+  -fx-padding: 6 16;
+}
+.cta {
+  -fx-background-color: #22c55e;
+  -fx-text-fill: white;
+  -fx-background-radius: 12;
+  -fx-padding: 6 14;
+}
+.btn-ghost {
+  -fx-background-color: transparent;
+  -fx-border-color: #e5e7eb;
+  -fx-border-radius: 10;
+  -fx-padding: 6 12;
+}
+
+/* ========== Modal ========== */
+.modal-backdrop { -fx-background-color: rgba(0,0,0,0.35); }
+.modal-card { -fx-background-color: white; -fx-background-radius: 14; }
+.modal-title { -fx-font-size: 18px; -fx-font-weight: 800; }
+
+/* ========== Progress Bar (rounded) ========== */
+.progress-rounded > .bar   { -fx-background-insets: 0; -fx-background-radius: 10; }
+.progress-rounded > .track { -fx-background-insets: 0; -fx-background-radius: 10; }
+
+/* ========== Habit Rows ========== */
+.habit-row {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 14;
+  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0.2, 0, 1);
+}
+.habit-row.completed { -fx-opacity: 0.9; }
+
+.habit-title { -fx-font-size: 14px; -fx-text-fill: #111827; -fx-font-weight: 700; }
+.strike { -fx-strikethrough: true; -fx-text-fill: #9ca3af; }
+.reward { -fx-text-fill: #6b7280; -fx-font-size: 12px; }
+
+.ghost  { -fx-background-color: transparent; -fx-border-color: #e5e7eb; -fx-border-radius: 10; -fx-padding: 6 12; }
+.bullet { -fx-background-color: #10b981; -fx-background-radius: 999; }
+
+/* Optional: style checkbox if you use a flat/circle look */
+.circle-check .box { -fx-background-radius: 6; }
+.circle-check { -fx-padding: 0.0 0.0 0.0 0.0; }
+
+/* ========== Strong Solid Stat Chips (older look) ========== */
+/* Base pill */
+.chip {
+  -fx-background-radius: 999;
+  -fx-padding: 6 14;
+  -fx-background-insets: 0;
+}
+/* IMPORTANT: color the label inside the chip (HBox doesn't pass text-fill) */
+.chip .label {
+  -fx-text-fill: white !important;
+  -fx-font-weight: 800;
+  -fx-font-size: 12px;
+}
+
+/* Solid colors (use !important to beat any earlier pastel rules) */
+.chip.strength-chip     { -fx-background-color: #ef4444 !important; } /* Red */
+.chip.intelligence-chip { -fx-background-color: #6366f1 !important; } /* Indigo */
+.chip.chi-chip          { -fx-background-color: #f59e0b !important; } /* Amber/Orange */
+.chip.charisma-chip     { -fx-background-color: #3b82f6 !important; } /* Blue */
+
+/* Completed rows: mute chip a bit */
+.habit-row.completed .chip { -fx-opacity: 0.65; }
+
+/* ========== Misc ========== */
+/* Buttons hover (subtle) */
+.button:hover {
+  -fx-opacity: 0.95;
+}
+
+/* Cards spacing if needed inside lists */
+.vbox > .card {
+  -fx-padding: 14;
+}
+
+/* TextFields / ComboBox subtle rounding to match design */
+.text-field, .combo-box, .combo-box-base {
+  -fx-background-radius: 10;
+}
+
+/* Pill-style progress bar (mint green, rounded ends) */
+.progress-pill {
+  /* lock thickness */
+  -fx-min-height: 12; 
+  -fx-pref-height: 12; 
+  -fx-max-height: 12;
+
+  /* color used by the bar */
+  -fx-accent: #22c55e;   /* bright green */
+}
+
+/* light track with fully rounded corners */
+.progress-pill > .track {
+  -fx-background-color: #e5e7eb;   /* light gray */
+  -fx-background-insets: 0;
+  -fx-background-radius: 999;
+}
+
+/* solid green fill with rounded ends */
+.progress-pill > .bar {
+  -fx-background-color: -fx-accent;
+  -fx-background-insets: 0;
+  -fx-background-radius: 999;
+}

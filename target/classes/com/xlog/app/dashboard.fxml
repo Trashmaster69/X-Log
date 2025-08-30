@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.xlog.app.controllers.DashboardController">
+
+  <BorderPane>
+    <!-- Top navigation -->
+    <top>
+      <HBox spacing="12" styleClass="topbar" alignment="CENTER_LEFT">
+        <padding>
+          <Insets top="10" right="16" bottom="10" left="16"/>
+        </padding>
+
+        <!-- LOGO: replace label with an ImageView -->
+        <ImageView fitHeight="100" preserveRatio="true">
+          <image>
+            <!-- resource path inside src/main/resources -->
+            <Image url="@/com/xlog/app/images/ui/logo.png"/>
+          </image>
+        </ImageView>
+
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Home" disable="true" styleClass="nav-primary"/>
+        <Button text="User"  onAction="#gotoUserDetails" styleClass="nav-secondary"/>
+        <Button text="Store" onAction="#gotoStore"       styleClass="nav-secondary"/>
+        <Button text="+ New Habit" onAction="#openAdd" styleClass="cta"/>
+      </HBox>
+    </top>
+
+    <!-- Page body -->
+    <center>
+      <VBox spacing="18" styleClass="page-bg">
+        <padding>
+          <Insets top="14" right="18" bottom="18" left="18"/>
+        </padding>
+
+        <Text fx:id="greetingText" styleClass="greeting" text="Good Morning"/>
+
+        <GridPane hgap="18" vgap="18">
+          <columnConstraints>
+            <ColumnConstraints percentWidth="64"/>
+            <ColumnConstraints percentWidth="36"/>
+          </columnConstraints>
+
+          <!-- Left column -->
+          <VBox spacing="12" GridPane.columnIndex="0">
+            <Label text="Today's Habits" styleClass="section-title"/>
+            <VBox fx:id="pendingList" spacing="10" styleClass="card"/>
+
+            <Label text="Completed Habits" styleClass="section-title"/>
+            <VBox fx:id="completedList" spacing="10" styleClass="card"/>
+          </VBox>
+
+          <!-- Right column -->
+          <VBox spacing="12" GridPane.columnIndex="1">
+            <Label text="At a Glance" styleClass="section-title"/>
+
+            <!-- Progress card -->
+            <VBox spacing="10" styleClass="card">
+              <Label text="Today's Progress" styleClass="subdued"/>
+
+              <!-- pill progress with percent text on the right -->
+              <HBox spacing="10" alignment="CENTER_LEFT">
+                <ProgressBar fx:id="dayProgress"
+                             styleClass="progress-pill"
+                             HBox.hgrow="ALWAYS"
+                             maxWidth="Infinity"
+                             prefHeight="12"/>
+                <Label fx:id="progressPct" text="0% complete" styleClass="subdued"/>
+              </HBox>
+            </VBox>
+
+            <!-- Top Habit card -->
+            <VBox spacing="10" styleClass="card">
+              <Label text="Top Habit:" styleClass="subdued"/>
+              <Label fx:id="topHabitLabel" text="—" styleClass="profile-name"/>
+            </VBox>
+          </VBox>
+        </GridPane>
+      </VBox>
+    </center>
+  </BorderPane>
+
+  <!-- Add Habit Modal -->
+  <AnchorPane fx:id="addModal" visible="false" pickOnBounds="true" styleClass="modal-backdrop">
+    <StackPane prefWidth="Infinity" prefHeight="Infinity"
+               AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox spacing="16" maxWidth="520" styleClass="modal-card">
+        <padding>
+          <Insets top="20" right="22" bottom="20" left="22"/>
+        </padding>
+
+        <Label text="Create a New Habit" styleClass="modal-title"/>
+
+        <GridPane hgap="12" vgap="10">
+          <columnConstraints>
+            <ColumnConstraints percentWidth="35"/>
+            <ColumnConstraints percentWidth="65"/>
+          </columnConstraints>
+
+          <Label text="Habit Name" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+          <TextField fx:id="txtHabit" promptText="e.g., Read for 20 minutes"
+                     GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+          <Label text="Category" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+          <ComboBox fx:id="cmbCategory" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <HBox alignment="CENTER_RIGHT" spacing="8">
+          <Button text="Cancel"   onAction="#closeAdd"   styleClass="btn-ghost"/>
+          <Button text="Add Habit" onAction="#confirmAdd" styleClass="cta"/>
+        </HBox>
+      </VBox>
+    </StackPane>
+  </AnchorPane>
+</StackPane>

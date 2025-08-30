@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.xlog.app.controllers.ShopController">
+  <BorderPane>
+    <top>
+      <HBox spacing="12" styleClass="topbar" alignment="CENTER_LEFT">
+        <padding><Insets top="10" right="16" bottom="10" left="16"/></padding>
+        <Label text="Zenith" styleClass="brand"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnDashboard" text="Dashboard" onAction="#gotoDashboard" styleClass="nav-secondary"/>
+        <Button fx:id="btnStore" text="Store" disable="true" styleClass="nav-primary"/>
+        <Region prefWidth="10"/>
+        <HBox spacing="8" styleClass="coin-badge" alignment="CENTER">
+          <ImageView fitWidth="18" fitHeight="18" pickOnBounds="true" preserveRatio="true">
+            <image><Image url="@images/ui/coin.png"/></image>
+          </ImageView>
+          <Label fx:id="coinsHeader" text="500"/>
+          <Label text="Coins" styleClass="coin-badge-label"/>
+        </HBox>
+      </HBox>
+    </top>
+    <center>
+      <VBox spacing="18" styleClass="page-bg">
+        <padding><Insets top="14" right="18" bottom="18" left="18"/></padding>
+        <HBox alignment="CENTER_LEFT" spacing="10"><Label text="Item Store" styleClass="greeting"/></HBox>
+        <HBox spacing="18" alignment="CENTER_LEFT">
+          <VBox spacing="10" styleClass="card store-card" onMouseClicked="#openFootball">
+            <StackPane styleClass="store-img"><ImageView fx:id="imgFootball" fitWidth="300" fitHeight="160" preserveRatio="true"/></StackPane>
+            <HBox alignment="CENTER_LEFT" spacing="8">
+              <Label fx:id="lblFootballName" text="Football" styleClass="store-item-title"/>
+              <Region HBox.hgrow="ALWAYS"/>
+              <HBox alignment="CENTER_RIGHT" spacing="6">
+                <ImageView fitWidth="16" fitHeight="16" preserveRatio="true"><image><Image url="@images/ui/coin.png"/></image></ImageView>
+                <Label fx:id="lblFootballPrice" text="150" styleClass="store-price"/>
+              </HBox>
+            </HBox>
+          </VBox>
+          <VBox spacing="10" styleClass="card store-card" onMouseClicked="#openSunglasses">
+            <StackPane styleClass="store-img"><ImageView fx:id="imgSunglasses" fitWidth="300" fitHeight="160" preserveRatio="true"/></StackPane>
+            <HBox alignment="CENTER_LEFT" spacing="8">
+              <Label fx:id="lblSunglassesName" text="Sunglasses" styleClass="store-item-title"/>
+              <Region HBox.hgrow="ALWAYS"/>
+              <HBox alignment="CENTER_RIGHT" spacing="6">
+                <ImageView fitWidth="16" fitHeight="16" preserveRatio="true"><image><Image url="@images/ui/coin.png"/></image></ImageView>
+                <Label fx:id="lblSunglassesPrice" text="200" styleClass="store-price"/>
+              </HBox>
+            </HBox>
+          </VBox>
+          <VBox spacing="10" styleClass="card store-card" onMouseClicked="#openStaff">
+            <StackPane styleClass="store-img"><ImageView fx:id="imgStaff" fitWidth="300" fitHeight="160" preserveRatio="true"/></StackPane>
+            <HBox alignment="CENTER_LEFT" spacing="8">
+              <Label fx:id="lblStaffName" text="Wizard Staff" styleClass="store-item-title"/>
+              <Region HBox.hgrow="ALWAYS"/>
+              <HBox alignment="CENTER_RIGHT" spacing="6">
+                <ImageView fitWidth="16" fitHeight="16" preserveRatio="true"><image><Image url="@images/ui/coin.png"/></image></ImageView>
+                <Label fx:id="lblStaffPrice" text="500" styleClass="store-price"/>
+              </HBox>
+            </HBox>
+          </VBox>
+        </HBox>
+      </VBox>
+    </center>
+  </BorderPane>
+  <AnchorPane fx:id="buyModal" visible="false" pickOnBounds="true" styleClass="modal-backdrop">
+    <StackPane prefWidth="Infinity" prefHeight="Infinity" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox spacing="16" maxWidth="560" styleClass="modal-card">
+        <padding><Insets top="22" right="24" bottom="22" left="24"/></padding>
+        <Label fx:id="modalTitle" text="Item" styleClass="modal-title"/>
+        <StackPane styleClass="store-img"><ImageView fx:id="modalImage" fitWidth="380" fitHeight="220" preserveRatio="true"/></StackPane>
+        <Label fx:id="modalDesc" wrapText="true"/>
+        <HBox alignment="CENTER_LEFT" spacing="8">
+          <ImageView fitWidth="18" fitHeight="18" preserveRatio="true"><image><Image url="@images/ui/coin.png"/></image></ImageView>
+          <Label fx:id="modalPrice" text="150" styleClass="store-price-large"/><Label text="Coins"/>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" spacing="8"><Button text="Cancel" onAction="#closeModal" styleClass="btn-ghost"/><Button fx:id="modalBuyBtn" text="Buy" onAction="#confirmBuy" styleClass="cta"/></HBox>
+      </VBox>
+    </StackPane>
+  </AnchorPane>
+</StackPane>

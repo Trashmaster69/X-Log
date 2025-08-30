@@ -1,0 +1,1 @@
+package com.xlog.app.models; public enum StatType { INTELLIGENCE, CHARISMA, STRENGTH, CHI }

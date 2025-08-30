@@ -1,0 +1,1 @@
+package com.xlog.app.models; public final class Session { private static final User U=new User("Zenith Seeker",500,0.0,1); private Session(){} public static User getUser(){ return U; } }
